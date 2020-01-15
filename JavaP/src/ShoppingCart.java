@@ -59,16 +59,16 @@ public class ShoppingCart extends JFrame implements ActionListener{
             updatePrice(); //Update priceLabel text with the current price
         } else if(e.getSource() == order){
             String name = JOptionPane.showInputDialog("Enter you name and address please");
-            if(name == null)
-                name = JOptionPane.showInputDialog("Name cannot be empty try again!");
-            String str = String.format("Order number %d\n%s", ++nr, name);
-            String str2 = "";
-            for(int i = 0; i<model2.size(); i++){
-                str += model2.get(i) + '\n';
+            if(name != null) {
+                String str = String.format("Order number %d\n%s\n", ++nr, name);
+                String str2 = "";
+                for (int i = 0; i < model2.size(); i++) {
+                    str += model2.get(i) + '\n';
+                }
+                JOptionPane.showMessageDialog(null, str + '\n' + str2 + '\n' + priceLabel.getText());
+                l1.clearSelection(); //Clear selections from the first list for the new customer
+                model2.clear(); //Empty list 2
             }
-            JOptionPane.showMessageDialog(null, str + '\n' + str2 + '\n' + priceLabel.getText());
-            l1.clearSelection(); //Clear selections from the first list for the new customer
-            model2.clear(); //Empty list 2
         }
     }
 

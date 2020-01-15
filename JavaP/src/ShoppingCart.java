@@ -73,7 +73,17 @@ public class ShoppingCart extends JFrame implements ActionListener{
     }
 
     private void updatePrice(){
-
+        int totalP = 0;
+        for(int i = 0; i < model2.size() ; i++){ //Loop through the purchase list
+            Scanner sc = new Scanner(model2.get(i)); //Creates a new scanner for each article in the model2 list object
+            String str = "";
+            while(sc.hasNext()){ //Loop through the entire line to get the price
+                str = sc.next();
+            }
+            str = str.substring(0,str.length()-2); // Remove the :- from the price and update the total price
+            totalP += Integer.parseInt(str);
+        }
+        priceLabel.setText("Total price: " + totalP + ":-");
     }
 
     public static void main(String[] args) throws IOException {new ShoppingCart();}

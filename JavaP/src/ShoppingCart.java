@@ -40,8 +40,8 @@ public class ShoppingCart extends JFrame implements ActionListener{
             model1.addElement(sc.nextLine());
         //Properties for the lists
         l1.setVisibleRowCount(10);  l2.setVisibleRowCount(10);
-        sp2.setPreferredSize(sp1.getPreferredSize()); //Two scrollpanels will have the same size
-        to.addActionListener(this);
+        sp2.setPreferredSize(sp1.getPreferredSize()); //The two scrollpanels will have the same size
+        to.addActionListener(this); //Connect buttons to a listener
         from.addActionListener(this);
         order.addActionListener(this);
         pack(); setVisible(true);

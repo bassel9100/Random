@@ -49,6 +49,30 @@ public class ShoppingCart extends JFrame implements ActionListener{
     }
 
     public void actionPerformed(ActionEvent e){
+        if(e.getSource() == to){ //If the customer pressed on the ">>" buy button
+            for(String s : l1.getSelectedValuesList()) //We loop through all selected values form the scroll panes and add them to second model object
+                model2.addElement(s); //We loop in case the customer has selected more than one article
+            updatePrice(); //Update priceLabel text with the current price
+        } else if(e.getSource() == from){ //If the customer pressed on the "<<" remove button
+            for(String s : l2.getSelectedValuesList()) //We loop through all selected values from the scroll pane and remove them from the second model object
+                model2.removeElement(s);
+            updatePrice(); //Update priceLabel text with the current price
+        } else if(e.getSource() == order){
+            String name = JOptionPane.showInputDialog("Enter you name and address please");
+            if(name == null)
+                name = JOptionPane.showInputDialog("Name cannot be empty try again!");
+            String str = String.format("Order number %d\n%s", ++nr, name);
+            String str2 = "";
+            for(int i = 0; i<model2.size(); i++){
+                str += model2.get(i) + '\n';
+            }
+            JOptionPane.showMessageDialog(null, str + '\n' + str2 + '\n' + priceLabel.getText());
+            l1.clearSelection(); //Clear selections from the first list for the new customer
+            model2.clear(); //Empty list 2
+        }
+    }
+
+    private void updatePrice(){
 
     }
 
